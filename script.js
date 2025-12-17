@@ -24,16 +24,15 @@
     } catch (_) {}
   }
 
-  function getInitialTheme() {
-    try {
-      const saved = localStorage.getItem("theme");
-      if (saved === "light" || saved === "dark") return saved;
-    } catch (_) {}
+    function getInitialTheme() {
+        try {
+            const saved = localStorage.getItem("theme");
+            if (saved === "light" || saved === "dark") return saved;
+        } catch (_) {}
 
-    // Si no hay preferencia guardada, respetamos el sistema
-    const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-    return prefersLight ? "light" : "dark";
-  }
+        // 🔴 FORZAMOS oscuro por defecto
+        return "dark";
+    }
 
   // Init
   setTheme(getInitialTheme());
